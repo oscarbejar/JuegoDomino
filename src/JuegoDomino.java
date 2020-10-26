@@ -75,7 +75,7 @@ public class JuegoDomino {
             fichas.add(ficha28);
 
 
-            //Collections.shuffle(fichas);
+            Collections.shuffle(fichas);
 
             //for(int i = 0; i < fichas.size(); i++) {
                 System.out.println(fichas);
@@ -104,17 +104,8 @@ public class JuegoDomino {
         MarcoConDibujos marco = new MarcoConDibujos();
         marco.setVisible(true);
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-*/
-
-
-
         /*
-
-*/
-
-
-
-
+         */
 
 
 
