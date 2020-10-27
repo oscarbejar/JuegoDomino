@@ -6,21 +6,28 @@ import java.awt.*;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
+
 
 
 public class JuegoDomino {
+
     public static void main(String[] args) {
-        System.out.println("Domino");
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Bienvenidos al juego Domino");
         Inicio dib = new Inicio();
         dib.iniciar();
 
+
         Jugador jugador1 = new Jugador();
-        jugador1.nombre = "juan";
-        System.out.println(jugador1.nombre);
+        System.out.println("Ingrese su nombre Jugador 1: ");
+        jugador1.nombre = entrada.nextLine();
+
 
         Jugador jugador2 = new Jugador();
-        jugador2.nombre = "maria";
-        System.out.println(jugador2.nombre);
+        System.out.println("Ingrese su nombre Jugador 2: ");
+        jugador2.nombre = entrada.nextLine();
+
 
         Tablero tablero = new Tablero();
 
@@ -105,18 +112,22 @@ public class JuegoDomino {
 
         }
 
-
+        System.out.println("Las Fichas del Jugador " + jugador1.nombre + " Son:");
         System.out.println(jugador1.fichasJugador);
+        System.out.println("Las Fichas del Jugador " + jugador2.nombre + " Son:");
         System.out.println(jugador2.fichasJugador);
-        System.out.println(mesa);
+        System.out.println("");
 
-        jugador1.tomarficha(mesa);
-        System.out.println(jugador1.fichasJugador);
-        System.out.println(mesa);
+        //System.out.println(mesa);
+
+        //jugador1.tomarficha(mesa);
+        //System.out.println(jugador1.fichasJugador);
+        //System.out.println(mesa);
 
         jugador2.fichasJugador = tablero.ponerficha(jugador2.fichasJugador);
-        System.out.println(jugador2.fichasJugador);
-        System.out.println(tablero.fichasTablero);
+        System.out.println("Las Fichas jugadas: " + tablero.fichasTablero);
+        //System.out.println(jugador2.fichasJugador);
+        //System.out.println(tablero.fichasTablero);
 
 
     }
