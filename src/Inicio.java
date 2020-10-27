@@ -21,7 +21,7 @@ public class Inicio extends JFrame {
         panelInicio.setVisible(true);
 
         fondo = new JLabel();
-        fondo.setIcon(new ImageIcon("/home/oskrbejar/Imágenes/dominopizza.gif"));
+        fondo.setIcon(new ImageIcon("/img/dominopizza.gif"));
         fondo.setSize(1500, 600);
         fondo.setVisible(true);
         panelInicio.add(fondo);

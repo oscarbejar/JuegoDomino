@@ -133,76 +133,7 @@ public class JuegoDomino {
     }
 }
 
-        /*
-    public void repartirFichas(Jugador j1, Jugador j2){
-        repartir(j1);
-        repartir(j2);
-    }
 
-    private void repartir(Jugador j1){
-        int random = 0;
-        Ficha fichaAleatoria = null;
-        for(int i=0; i<7; i++){
-            random = new Random().nextInt(getFichasRestantes());
-            fichaAleatoria = this.fichas.get(random);
-            j1.darFicha(fichaAleatoria);
-            this.fichas.remove(random);
-        }
-    }
-
-    private int getFichasRestantes(){
-        return this.fichas.length();
-    }
-}
-/*
-    public void repartir() {
-        while (true) {
-            jugador1.darFicha(set.repartirFicha());
-            jugador2.darFicha(set.repartirFicha());
-
-            if (jugador1.cantFichas() == 7 && jugador1.cantFichas() == 7)
-                return;
-        }
-    }
-
-
-
-    public FichaDomino(int izq, int der)
-    {
-        if(izq >= valorMin && izq <= valorMax)
-        {
-            valorIzquierdo = izq;
-        }
-
-        if(der >= valorMin && der <= valorMax)
-        {
-            valorDerecho = der;
-        }
-    }
- public FichaDomino repartirFicha()
-    {
-        if(currIndex < fichaDominoObjects.length)
-            return fichaDominoObjects[currIndex++];
-
-
-*/
-
-        //commit2
-        /*Ventana vent = new Ventana();
-        vent.ventana.setVisible(true);
-        vent.panelInicio.setVisible(true);
-    //hola
-        /*
-        MarcoConDibujos marco = new MarcoConDibujos();
-        marco.setVisible(true);
-        marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-*/
-
-
-
-        /*
-
-*/
 
 
 
