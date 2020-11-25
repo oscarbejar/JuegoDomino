@@ -14,7 +14,7 @@ public class Jugador {
 
     }
 
-    public void tomarficha(ArrayList<Ficha> mesa) {
+    public void tomarFicha(ArrayList<Ficha> mesa) {
         fichasJugador.add(mesa.get(0));
         mesa.remove(0);
     }

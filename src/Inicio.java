@@ -37,12 +37,12 @@ public class Inicio extends JFrame {
 
     public void iniciar(){
         Inicio dbj = new Inicio();
-        JFrame ventan = new JFrame( "Juego de Domino");
-        ventan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventan.setSize(1200,600);
-        ventan.add(dbj.panelInicio);
-        ventan.add(dbj.boton);
-        ventan.setVisible(true);
+        JFrame ventana = new JFrame( "Juego de Domino");
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setSize(1200,600);
+        ventana.add(dbj.panelInicio);
+        ventana.add(dbj.boton);
+        ventana.setVisible(true);
     }
 
 }

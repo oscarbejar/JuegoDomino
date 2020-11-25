@@ -8,12 +8,16 @@ public class Tablero {
     ArrayList<Ficha> fichasAct = new ArrayList<>();
 
 
-    public ArrayList ponerficha(ArrayList<Ficha> fichaJug) {
+    public ArrayList ponerFicha(ArrayList<Ficha> fichaJug) {
         if (fichaJug != null) {
             fichasTablero.add(fichaJug.get(0));
 
             fichaJug.remove(0);
             fichasAct = fichaJug;
+            System.out.println("+++++");
+            System.out.println(fichaJug);
+            System.out.println("-----");
+            System.out.println(fichasAct);
         }
         return fichasAct;
     }

@@ -98,17 +98,20 @@ public class JuegoDomino {
         Collections.shuffle(fichas);
 
         ArrayList<Ficha> mesa = new ArrayList<>();
-        //for(int i = 0; i < fichas.size() - 1; i++)
-        for(int i = 0; i <= fichas.size()-1; i++) {
-            if (i < 7) {
+        for(int i = 0; i <= fichas.size()-1; i++)
+        {
+            if (i < 7)
+            {
               jugador1.fichasJugador.add(fichas.get(i));
             }
-            if(i >7 && i <= 14){
+            if(i >=7 && i < 14)
+            {
                 jugador2.fichasJugador.add(fichas.get(i));
             }
-            else{
+            else if(i >=14 && i <= 28)
+                {
                 mesa.add(fichas.get(i));
-            }
+                }
 
         }
 
@@ -116,28 +119,43 @@ public class JuegoDomino {
         System.out.println(jugador1.fichasJugador);
         System.out.println("Las Fichas del Jugador " + jugador2.nombre + " Son:");
         System.out.println(jugador2.fichasJugador);
+        System.out.println("Fichas de las mesa");
+        System.out.println(mesa);
         System.out.println("");
+        System.out.println("");
+        jugador1.tomarFicha(mesa);
+        jugador2.tomarFicha(mesa);
+        jugador2.tomarFicha(mesa);
+        jugador2.tomarFicha(mesa);
+        System.out.println("*******************************************");
 
-        //System.out.println(mesa);
 
-        //jugador1.tomarficha(mesa);
+        System.out.println("Las Fichas del Jugador " + jugador1.nombre + " Son:");
+        System.out.println(jugador1.fichasJugador);
+        System.out.println("Las Fichas del Jugador " + jugador2.nombre + " Son:");
+        System.out.println(jugador2.fichasJugador);
+        System.out.println("Fichas de las mesa");
+        System.out.println(mesa);
+        System.out.println("");
+        System.out.println("");
+        //jugador1.tomarFicha(mesa);
         //System.out.println(jugador1.fichasJugador);
         //System.out.println(mesa);
 
-        jugador2.fichasJugador = tablero.ponerficha(jugador2.fichasJugador);
-        //System.out.println("Las Fichas jugadas: " + tablero.fichasTablero);
+        jugador2.fichasJugador = tablero.ponerFicha(jugador2.fichasJugador);
+        System.out.println("Las Fichas jugadas: " + tablero.fichasTablero);
         //System.out.println(jugador2.fichasJugador);
-        Ficha Ultficha;
-        Ultficha = tablero.fichasTablero.get(0);
-        System.out.println(Ultficha);
-        System.out.println(Ultficha.getNum1());
-        System.out.println(Ultficha.getNum2());
-        int ord = Ultficha.getNum1();
-        Ultficha.setNum1(Ultficha.getNum2());
-        Ultficha.setNum2(ord);
+        Ficha ultFicha;
+        ultFicha = tablero.fichasTablero.get(0);
+        System.out.println("sin ordenar");
+        System.out.println(ultFicha);
 
-        System.out.println(Ultficha.getNum1());
-        System.out.println(Ultficha.getNum2());
+        ultFicha = ultFicha.ordenarFicha(ultFicha);
+        System.out.println("ordenado");
+        System.out.println(ultFicha);
+        //System.out.println("");
+        //System.out.println(ultFicha.getNum1());
+        //System.out.println(ultFicha.getNum2());
 
 
     }
