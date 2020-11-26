@@ -123,25 +123,22 @@ public class JuegoDomino {
         System.out.println(mesa);
         System.out.println("");
         System.out.println("");
-        jugador1.tomarFicha(mesa);
-        jugador2.tomarFicha(mesa);
-        jugador2.tomarFicha(mesa);
-        jugador2.tomarFicha(mesa);
+        //jugador1.tomarFicha(mesa);
+        //jugador2.tomarFicha(mesa);
+        //jugador2.tomarFicha(mesa);
+        //jugador2.tomarFicha(mesa);
         System.out.println("*******************************************");
 
-
-        System.out.println("Las Fichas del Jugador " + jugador1.nombre + " Son:");
-        System.out.println(jugador1.fichasJugador);
-        System.out.println("Las Fichas del Jugador " + jugador2.nombre + " Son:");
-        System.out.println(jugador2.fichasJugador);
-        System.out.println("Fichas de las mesa");
-        System.out.println(mesa);
-        System.out.println("");
-        System.out.println("");
         //jugador1.tomarFicha(mesa);
         //System.out.println(jugador1.fichasJugador);
         //System.out.println(mesa);
 
+
+
+
+        tablero.quienSale(jugador1.fichasJugador , jugador2.fichasJugador);
+
+        jugador1.fichasJugador = tablero.ponerFicha(jugador1.fichasJugador);
         jugador2.fichasJugador = tablero.ponerFicha(jugador2.fichasJugador);
         System.out.println("Las Fichas jugadas: " + tablero.fichasTablero);
         //System.out.println(jugador2.fichasJugador);
