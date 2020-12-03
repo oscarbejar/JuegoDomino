@@ -4,11 +4,7 @@ import org.w3c.dom.ls.LSOutput;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
-
-
+import java.util.*;
 
 public class JuegoDomino {
 
@@ -16,7 +12,7 @@ public class JuegoDomino {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Bienvenidos al juego Domino");
         Inicio dib = new Inicio();
-        dib.iniciar();
+        //dib.iniciar();
 
 
         Jugador jugador1 = new Jugador();
@@ -121,8 +117,8 @@ public class JuegoDomino {
         System.out.println(jugador2.fichasJugador);
         System.out.println("Fichas de las mesa");
         System.out.println(mesa);
-        System.out.println("");
-        System.out.println("");
+
+
         //jugador1.tomarFicha(mesa);
         //jugador2.tomarFicha(mesa);
         //jugador2.tomarFicha(mesa);
@@ -137,7 +133,7 @@ public class JuegoDomino {
 
 
         tablero.quienSale(jugador1.fichasJugador , jugador2.fichasJugador);
-
+    /*
         jugador1.fichasJugador = tablero.ponerFicha(jugador1.fichasJugador);
         jugador2.fichasJugador = tablero.ponerFicha(jugador2.fichasJugador);
         System.out.println("Las Fichas jugadas: " + tablero.fichasTablero);
@@ -153,8 +149,7 @@ public class JuegoDomino {
         //System.out.println("");
         //System.out.println(ultFicha.getNum1());
         //System.out.println(ultFicha.getNum2());
-
-
+*/
     }
 }
 
