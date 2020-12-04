@@ -7,6 +7,8 @@ public class Tablero {
     ArrayList<Ficha> fichasTablero = new ArrayList<>();
     ArrayList<Ficha> fichasAct = new ArrayList<>();
     ArrayList<Ficha> fichaInicial = new ArrayList<>();
+    int pos1;
+    int pos2;
 
 
     public ArrayList quienSale(ArrayList<Ficha> fichaJug1, ArrayList<Ficha> fichaJug2) {
@@ -20,11 +22,24 @@ public class Tablero {
                         fichaInicial.add(fichaJug2.get(i));
                         break;
                     }
-
                 }
-                if(fichaInicial.get(0).getNum1() == 6  && fichaInicial.get(0).getNum2() == 6){
+                    if (fichaInicial.size() > 0){
+                        if (fichaInicial.get(0).getNum1() == j && fichaInicial.get(0).getNum2() == j) {
+                            break;
+                        }
+                    }
 
-                }
+
+
+            }
+            if(fichaInicial.size() < 1){
+                pos1 = fichamayor(fichaJug1);
+                pos2 = fichamayor(fichaJug2);
+                if (fichaJug1.get(pos1).getNum1() + fichaJug1.get(pos1).getNum2() > fichaJug2.get(pos2).getNum2() + fichaJug2.get(pos2).getNum2()){
+                    fichaInicial.add(fichaJug1.get(pos1));
+
+                }else
+                    fichaInicial.add(fichaJug2.get(pos2));
             }
             System.out.println(fichaInicial + "++++_____+++++");
         }
@@ -44,6 +59,23 @@ public class Tablero {
 
         return fichasAct;
     }
+
+    public int fichamayor(ArrayList<Ficha> fichasJug){
+        int fmayor = 0;
+        int pos = 0;
+
+
+            for(int i = 0; i <= fichasJug.size() -1; i ++){
+                if (fichasJug.get(i).getNum1() + fichasJug.get(i).getNum2() > fmayor){
+                    fmayor = fichasJug.get(i).getNum1() + fichasJug.get(i).getNum2();
+                    pos = i;
+
+                }
+            }
+
+
+            return  pos;
+            }
 
 
 

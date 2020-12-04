@@ -1,13 +1,15 @@
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public class Inicio extends JFrame {
+public class Inicio extends JFrame
+{
 
     JPanel panelInicio;
     JLabel fondo;
     JButton boton;
 
-    public Inicio() {
+    public Inicio()
+    {
 
         setSize(1200, 900);
         setLocationRelativeTo(null);
@@ -35,7 +37,8 @@ public class Inicio extends JFrame {
 
     }
 
-    public void iniciar(){
+    public void iniciar()
+    {
         Inicio dbj = new Inicio();
         JFrame ventana = new JFrame( "Juego de Domino");
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

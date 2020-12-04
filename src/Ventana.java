@@ -2,7 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /*
-public class Ventana extends JFrame {
+public class Ventana extends JFrame
+{
+ */
 
 /*
     JTextField jugador1;
@@ -13,7 +15,8 @@ public class Ventana extends JFrame {
     JLabel juga1;
     JLabel juga2;
 
-    public Ventana() {
+    public Ventana()
+    {
         ventana = new JFrame("Juego de Dominó");
 
 

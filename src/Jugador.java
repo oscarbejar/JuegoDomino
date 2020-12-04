@@ -7,14 +7,16 @@ public class Jugador {
     int puntos;
     ArrayList<Ficha> fichasJugador = new ArrayList<>();
 
-    public Jugador() {
+    public Jugador()
+    {
         this.nombre = nombre;
         this.puntos = puntos;
 
-
     }
 
-    public void tomarFicha(ArrayList<Ficha> mesa) {
+
+    public void tomarFicha(ArrayList<Ficha> mesa)
+    {
         fichasJugador.add(mesa.get(0));
         mesa.remove(0);
     }

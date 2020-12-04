@@ -1,9 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class PanelConFiguras extends JPanel {
+public class PanelConFiguras extends JPanel
+{
 
-        public void paintComponent(Graphics g) {
+        public void paintComponent(Graphics g)
+        {
 
             super.paintComponent(g);
 
@@ -14,5 +16,5 @@ public class PanelConFiguras extends JPanel {
             g.fillOval(22, 32, 4, 4);
             g.fillOval(18, 52, 4, 4);
         }
-    }
+}
 

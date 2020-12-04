@@ -1,6 +1,5 @@
 import jdk.swing.interop.SwingInterOpUtils;
 import org.w3c.dom.ls.LSOutput;
-
 import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLOutput;
@@ -15,53 +14,50 @@ public class JuegoDomino {
         //dib.iniciar();
 
 
+
         Jugador jugador1 = new Jugador();
         System.out.println("Ingrese su nombre Jugador 1: ");
         jugador1.nombre = entrada.nextLine();
-
 
         Jugador jugador2 = new Jugador();
         System.out.println("Ingrese su nombre Jugador 2: ");
         jugador2.nombre = entrada.nextLine();
 
-
         Tablero tablero = new Tablero();
 
 
 
-    Ficha ficha1 = new Ficha(0, 0);
-    Ficha ficha2 = new Ficha(0, 1);
-    Ficha ficha3 = new Ficha(0, 2);
-    Ficha ficha4 = new Ficha(0, 3);
-    Ficha ficha5 = new Ficha(0, 4);
-    Ficha ficha6 = new Ficha(0, 5);
-    Ficha ficha7 = new Ficha(0, 6);
-    Ficha ficha8 = new Ficha(1, 1);
-    Ficha ficha9 = new Ficha(1, 2);
-    Ficha ficha10 = new Ficha(1, 3);
-    Ficha ficha11 = new Ficha(1, 4);
-    Ficha ficha12 = new Ficha(1, 5);
-    Ficha ficha13 = new Ficha(1, 6);
-    Ficha ficha14 = new Ficha(2, 2);
-    Ficha ficha15 = new Ficha(2, 3);
-    Ficha ficha16 = new Ficha(2, 4);
-    Ficha ficha17 = new Ficha(2, 5);
-    Ficha ficha18 = new Ficha(2, 6);
-    Ficha ficha19 = new Ficha(3, 3);
-    Ficha ficha20 = new Ficha(3, 4);
-    Ficha ficha21 = new Ficha(3, 5);
-    Ficha ficha22 = new Ficha(3, 6);
-    Ficha ficha23 = new Ficha(4, 4);
-    Ficha ficha24 = new Ficha(4, 5);
-    Ficha ficha25 = new Ficha(4, 6);
-    Ficha ficha26 = new Ficha(5, 5);
-    Ficha ficha27 = new Ficha(5, 6);
-    Ficha ficha28 = new Ficha(6, 6);
+        Ficha ficha1 = new Ficha(0, 0);
+        Ficha ficha2 = new Ficha(0, 1);
+        Ficha ficha3 = new Ficha(0, 2);
+        Ficha ficha4 = new Ficha(0, 3);
+        Ficha ficha5 = new Ficha(0, 4);
+        Ficha ficha6 = new Ficha(0, 5);
+        Ficha ficha7 = new Ficha(0, 6);
+        Ficha ficha8 = new Ficha(1, 1);
+        Ficha ficha9 = new Ficha(1, 2);
+        Ficha ficha10 = new Ficha(1, 3);
+        Ficha ficha11 = new Ficha(1, 4);
+        Ficha ficha12 = new Ficha(1, 5);
+        Ficha ficha13 = new Ficha(1, 6);
+        Ficha ficha14 = new Ficha(2, 2);
+        Ficha ficha15 = new Ficha(2, 3);
+        Ficha ficha16 = new Ficha(2, 4);
+        Ficha ficha17 = new Ficha(2, 5);
+        Ficha ficha18 = new Ficha(2, 6);
+        Ficha ficha19 = new Ficha(3, 3);
+        Ficha ficha20 = new Ficha(3, 4);
+        Ficha ficha21 = new Ficha(3, 5);
+        Ficha ficha22 = new Ficha(3, 6);
+        Ficha ficha23 = new Ficha(4, 4);
+        Ficha ficha24 = new Ficha(4, 5);
+        Ficha ficha25 = new Ficha(4, 6);
+        Ficha ficha26 = new Ficha(5, 5);
+        Ficha ficha27 = new Ficha(5, 6);
+        Ficha ficha28 = new Ficha(6, 7);
 
 
         ArrayList<Ficha> fichas = new ArrayList<Ficha>();
-
-
         fichas.add(ficha1);
         fichas.add(ficha2);
         fichas.add(ficha3);
@@ -91,6 +87,8 @@ public class JuegoDomino {
         fichas.add(ficha27);
         fichas.add(ficha28);
 
+
+
         Collections.shuffle(fichas);
 
         ArrayList<Ficha> mesa = new ArrayList<>();
@@ -111,28 +109,73 @@ public class JuegoDomino {
 
         }
 
+
         System.out.println("Las Fichas del Jugador " + jugador1.nombre + " Son:");
         System.out.println(jugador1.fichasJugador);
         System.out.println("Las Fichas del Jugador " + jugador2.nombre + " Son:");
         System.out.println(jugador2.fichasJugador);
-        System.out.println("Fichas de las mesa");
+        System.out.println("Las Fichas de las Mesa");
         System.out.println(mesa);
+
+        tablero.quienSale(jugador1.fichasJugador , jugador2.fichasJugador);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //jugador1.tomarFicha(mesa);
         //jugador2.tomarFicha(mesa);
         //jugador2.tomarFicha(mesa);
         //jugador2.tomarFicha(mesa);
-        System.out.println("*******************************************");
 
         //jugador1.tomarFicha(mesa);
         //System.out.println(jugador1.fichasJugador);
         //System.out.println(mesa);
 
-
-
-
-        tablero.quienSale(jugador1.fichasJugador , jugador2.fichasJugador);
     /*
         jugador1.fichasJugador = tablero.ponerFicha(jugador1.fichasJugador);
         jugador2.fichasJugador = tablero.ponerFicha(jugador2.fichasJugador);
