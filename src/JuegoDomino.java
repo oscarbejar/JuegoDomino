@@ -8,6 +8,9 @@ import java.util.*;
 public class JuegoDomino {
 
     public static void main(String[] args) {
+
+        ArrayList<Ficha> fichaSalir = new ArrayList<>();
+        int posS;
         Scanner entrada = new Scanner(System.in);
         System.out.println("Bienvenidos al juego Domino");
         Inicio dib = new Inicio();
@@ -90,7 +93,6 @@ public class JuegoDomino {
 
 
         Collections.shuffle(fichas);
-
         ArrayList<Ficha> mesa = new ArrayList<>();
         for(int i = 0; i <= fichas.size()-1; i++)
         {
@@ -106,20 +108,55 @@ public class JuegoDomino {
                 {
                 mesa.add(fichas.get(i));
                 }
-
         }
-
 
         System.out.println("Las Fichas del Jugador " + jugador1.nombre + " Son:");
         System.out.println(jugador1.fichasJugador);
         System.out.println("Las Fichas del Jugador " + jugador2.nombre + " Son:");
         System.out.println(jugador2.fichasJugador);
         System.out.println("Las Fichas de las Mesa");
-        System.out.println(mesa);
+        System.out.println(mesa + "\n");
+        fichaSalir = tablero.quienSale(jugador1.fichasJugador , jugador2.fichasJugador);
+        int primerT = tablero.turnoI(jugador1.fichasJugador, jugador2.fichasJugador, fichaSalir);
 
-        tablero.quienSale(jugador1.fichasJugador , jugador2.fichasJugador);
+        if(primerT == 1){
+            System.out.println("Turno de " + jugador1.nombre);
+            System.out.println(jugador1.fichasJugador);
+            System.out.println("Indicar la posición de la ficha a colocar: ");
+            posS = entrada.nextInt();
+            tablero.ponerFichaI(jugador1.fichasJugador, posS-1);
+        }
+        else {
+            System.out.println("Turno de " + jugador2.nombre);
+            System.out.println(jugador2.fichasJugador);
+            System.out.println("Indicar la posición de la ficha a colocar: ");
+            posS = entrada.nextInt();
+            tablero.ponerFichaI(jugador2.fichasJugador, posS-1);
+        }
 
 
+        System.out.println("Fichas del tablero" + tablero.fichasTablero);
+        System.out.println("1" + jugador1.fichasJugador);
+        System.out.println("2" + jugador2.fichasJugador);
+        System.out.println("");
+
+        System.out.println("pongala");
+        posS = entrada.nextInt();
+        tablero.ponerFicha(jugador1.fichasJugador, posS);
+        System.out.println("Fichas del tablero" + tablero.fichasTablero);
+        System.out.println("1" + jugador1.fichasJugador);
+        System.out.println("2" + jugador2.fichasJugador);
+        System.out.println("");
+
+
+        System.out.println("pongala2");
+        posS = entrada.nextInt();
+        tablero.ponerFicha(jugador2.fichasJugador, posS);
+
+        System.out.println("");
+        System.out.println("Fichas del tablero" + tablero.fichasTablero);
+        System.out.println("1" + jugador1.fichasJugador);
+        System.out.println("2" + jugador2.fichasJugador);
 
 
 
