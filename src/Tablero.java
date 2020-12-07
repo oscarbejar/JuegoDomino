@@ -71,14 +71,21 @@ public class Tablero {
         if (fichaJug.get(pos).getNum1() == izq) {
             fichaJug.set(pos, fichaJug.get(pos).ordenarFicha(fichaJug.get(pos)));
             fichasTablero.add(0,fichaJug.get(pos));
+            fichaJug.remove(pos);
+            izq = fichasTablero.get(0).getNum1();
         } else if (fichaJug.get(pos).getNum2() == izq) {
             fichasTablero.add(0, fichaJug.get(pos));
+            fichaJug.remove(pos);
+            izq = fichasTablero.get(0).getNum1();
         } else if (fichaJug.get(pos).getNum2() == der) {
             fichaJug.set(pos, fichaJug.get(pos).ordenarFicha(fichaJug.get(pos)));
             fichasTablero.add(fichasTablero.size() - 1, fichaJug.get(pos));
+            fichaJug.remove(pos);
+            der = fichasTablero.get(fichasTablero.size()-1).getNum2();
         } else if (fichaJug.get(pos).getNum1() == der) {
             fichasTablero.add(fichasTablero.size() - 1, fichaJug.get(pos));
-
+            fichaJug.remove(pos);
+            der = fichasTablero.get(fichasTablero.size()-1).getNum2();
         }
             return fichasAct;
         }
