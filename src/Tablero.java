@@ -70,7 +70,7 @@ public class Tablero {
     public ArrayList ponerFicha(ArrayList<Ficha> fichaJug, int pos) {
         if (fichaJug.get(pos).getNum1() == izq) {
             fichaJug.set(pos, fichaJug.get(pos).ordenarFicha(fichaJug.get(pos)));
-            fichasTablero.add(0,fichaJug.get(pos));
+            fichasTablero.add(0, fichaJug.get(pos));
             fichaJug.remove(pos);
             izq = fichasTablero.get(0).getNum1();
         } else if (fichaJug.get(pos).getNum2() == izq) {
@@ -81,79 +81,97 @@ public class Tablero {
             fichaJug.set(pos, fichaJug.get(pos).ordenarFicha(fichaJug.get(pos)));
             fichasTablero.add(fichasTablero.size(), fichaJug.get(pos));
             fichaJug.remove(pos);
-            der = fichasTablero.get(fichasTablero.size()-1).getNum2();
+            der = fichasTablero.get(fichasTablero.size() - 1).getNum2();
         } else if (fichaJug.get(pos).getNum1() == der) {
             fichasTablero.add(fichasTablero.size(), fichaJug.get(pos));
             fichaJug.remove(pos);
-            der = fichasTablero.get(fichasTablero.size()-1).getNum2();
+            der = fichasTablero.get(fichasTablero.size() - 1).getNum2();
         }
-            return fichaJug;
+        return fichaJug;
+    }
+
+
+    public int fichamayor(ArrayList<Ficha> fichasJug) {
+        int fmayor = 0;
+        int pos = 0;
+
+
+        for (int i = 0; i <= fichasJug.size() - 1; i++) {
+            if (fichasJug.get(i).getNum1() + fichasJug.get(i).getNum2() > fmayor) {
+                fmayor = fichasJug.get(i).getNum1() + fichasJug.get(i).getNum2();
+                pos = i;
+
+            }
         }
+        return pos;
+    }
 
 
-        public int fichamayor (ArrayList < Ficha > fichasJug) {
-            int fmayor = 0;
-            int pos = 0;
-
-
-            for (int i = 0; i <= fichasJug.size() - 1; i++) {
-                if (fichasJug.get(i).getNum1() + fichasJug.get(i).getNum2() > fmayor) {
-                    fmayor = fichasJug.get(i).getNum1() + fichasJug.get(i).getNum2();
-                    pos = i;
-
-                }
+    public int turnoI(ArrayList<Ficha> fichasJug1, ArrayList<Ficha> fichasJug2, ArrayList<Ficha> fichaSalir) {
+        int jug = 0;
+        for (int i = 0; i <= fichasJug1.size() - 1; i++) {
+            if (fichaSalir.get(0) == fichasJug1.get(i)) {
+                jug = 1;
+                break;
             }
-            return pos;
+            if (fichaSalir.get(0) == fichasJug2.get(i)) {
+                jug = 2;
+                break;
+            }
         }
+        return jug;
+    }
 
-
-        public int turnoI(ArrayList < Ficha > fichasJug1, ArrayList < Ficha > fichasJug2, ArrayList < Ficha > fichaSalir){
-            int jug = 0;
-            for (int i = 0; i <= fichasJug1.size() - 1; i++) {
-                if (fichaSalir.get(0) == fichasJug1.get(i)) {
-                    jug = 1;
-                    break;
-                }
-                if (fichaSalir.get(0) == fichasJug2.get(i)) {
-                    jug = 2;
-                    break;
-                }
+    public boolean validarJuego(ArrayList<Ficha> fichasJug1, ArrayList<Ficha> fichasJug2, ArrayList<Ficha> fichasM) {
+        boolean validador = true;
+        int v = 0;
+        for (int i = 0; i < fichasJug1.size(); i++) {
+            if ((fichasJug1.get(i).getNum1() == izq) || (fichasJug1.get(i).getNum2() == izq) || (fichasJug1.get(i).getNum2() == der) || (fichasJug1.get(i).getNum1() == der)) {
+                v += 1;
+                break;
             }
-            return jug;
         }
+        for (int i = 0; i < fichasJug2.size(); i++) {
+            if ((fichasJug2.get(i).getNum1() == izq) || (fichasJug2.get(i).getNum2() == izq) || (fichasJug2.get(i).getNum2() == der) || (fichasJug2.get(i).getNum1() == der)) {
+                v += 1;
+                break;
+            }
+        }
+        for (int i = 0; i < fichasM.size(); i++) {
+            if ((fichasM.get(i).getNum1() == izq) || (fichasM.get(i).getNum2() == izq) || (fichasM.get(i).getNum2() == der) || (fichasM.get(i).getNum1() == der)) {
+                v += 1;
+                break;
+            }
+        }
+        if (v > 0) {
+            validador = true;
+        } else {
+            validador = false;
+        }
+        return validador;
 
-        public boolean validarJugadas(ArrayList<Ficha> fichasJug1, ArrayList<Ficha> fichasJug2,ArrayList<Ficha> fichasM) {
-            boolean validador = true;
-            int v = 0;
-            for (int i = 0; i <= fichasJug1.size(); i++) {
-                if ((fichasJug1.get(i).getNum1() == izq) || (fichasJug1.get(i).getNum2() == izq) || (fichasJug1.get(i).getNum2() == der) || (fichasJug1.get(i).getNum1() == der)) {
-                    v += 1;
-                    break;
-                }
-            }
-            for (int i = 0; i <= fichasJug2.size(); i++) {
-                if ((fichasJug2.get(i).getNum1() == izq) || (fichasJug2.get(i).getNum2() == izq) || (fichasJug2.get(i).getNum2() == der) || (fichasJug2.get(i).getNum1() == der)) {
-                    v += 1;
-                    break;
-                }
-            }
-            for (int i = 0; i <= fichasM.size(); i++) {
-                if ((fichasM.get(i).getNum1() == izq) || (fichasM.get(i).getNum2() == izq) || (fichasM.get(i).getNum2() == der) || (fichasM.get(i).getNum1() == der)) {
-                    v += 1;
-                    break;
-                }
-            }
-                    if (v > 0) {
-                        validador = true;
-                    } else {
-                        validador = false;
-                    }
-                    return validador;
-                }
+    }
+
+    public boolean validarJugada(ArrayList<Ficha> fichasJug, int posc) {
+        boolean valida = false;
+            if ((fichasJug.get(posc).getNum1() == izq) || (fichasJug.get(posc).getNum2() == izq) || (fichasJug.get(posc).getNum2() == der) || (fichasJug.get(posc).getNum1() == der)) {
+                valida = true;
             }
 
+        return valida;
+    }
 
+    public int puntaje(ArrayList<Ficha> fichasJug) {
+        int puntosJug = 0;
+        for (int i = 0; i < fichasJug.size(); i++) {
+            puntosJug += fichasJug.get(i).getNum1();
+            puntosJug += fichasJug.get(i).getNum2();
 
+        }
+        return puntosJug;
+    }
+
+}
 
 
 
