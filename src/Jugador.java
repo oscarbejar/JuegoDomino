@@ -15,14 +15,16 @@ public class Jugador {
     }
 
 
-    public void tomarFicha(ArrayList<Ficha> mesa) {
+    public ArrayList<Ficha> tomarFicha(ArrayList<Ficha> mesa) {
         if (mesa.size() > 0) {
             fichasJugador.add(mesa.get(0));
+            System.out.println("Ficha tomada: " + mesa.get(0));
             mesa.remove(0);
         }
         else{
             System.out.println("Mesa Vacia");
         }
+        return fichasJugador;
     }
 
 

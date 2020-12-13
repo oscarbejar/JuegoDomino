@@ -11,23 +11,24 @@ public class JuegoDomino {
 
         ArrayList<Ficha> fichaSalir = new ArrayList<>();
         int posS;
+        boolean validador = true;
+        int primerT;
+        ArrayList<Ficha> fichavl = new ArrayList<>();
         Scanner entrada = new Scanner(System.in);
         System.out.println("Bienvenidos al juego Domino");
         Inicio dib = new Inicio();
         //dib.iniciar();
 
 
-
         Jugador jugador1 = new Jugador();
-        System.out.println("Ingrese su nombre Jugador 1: ");
+        System.out.print("Ingrese su nombre Jugador 1: ");
         jugador1.nombre = entrada.nextLine();
 
         Jugador jugador2 = new Jugador();
-        System.out.println("Ingrese su nombre Jugador 2: ");
+        System.out.print("Ingrese su nombre Jugador 2: ");
         jugador2.nombre = entrada.nextLine();
 
         Tablero tablero = new Tablero();
-
 
 
         Ficha ficha1 = new Ficha(0, 0);
@@ -57,7 +58,7 @@ public class JuegoDomino {
         Ficha ficha25 = new Ficha(4, 6);
         Ficha ficha26 = new Ficha(5, 5);
         Ficha ficha27 = new Ficha(5, 6);
-        Ficha ficha28 = new Ficha(6, 7);
+        Ficha ficha28 = new Ficha(6, 6);
 
 
         ArrayList<Ficha> fichas = new ArrayList<Ficha>();
@@ -91,23 +92,17 @@ public class JuegoDomino {
         fichas.add(ficha28);
 
 
-
         Collections.shuffle(fichas);
         ArrayList<Ficha> mesa = new ArrayList<>();
-        for(int i = 0; i <= fichas.size()-1; i++)
-        {
-            if (i < 7)
-            {
-              jugador1.fichasJugador.add(fichas.get(i));
+        for (int i = 0; i <= fichas.size() - 1; i++) {
+            if (i < 7) {
+                jugador1.fichasJugador.add(fichas.get(i));
             }
-            if(i >=7 && i < 14)
-            {
+            if (i >= 7 && i < 14) {
                 jugador2.fichasJugador.add(fichas.get(i));
-            }
-            else if(i >=14 && i <= 28)
-                {
+            } else if (i >= 14 && i <= 28) {
                 mesa.add(fichas.get(i));
-                }
+            }
         }
 
         System.out.println("Las Fichas del Jugador " + jugador1.nombre + " Son:");
@@ -116,37 +111,89 @@ public class JuegoDomino {
         System.out.println(jugador2.fichasJugador);
         System.out.println("Las Fichas de las Mesa");
         System.out.println(mesa + "\n");
-        fichaSalir = tablero.quienSale(jugador1.fichasJugador , jugador2.fichasJugador);
-        int primerT = tablero.turnoI(jugador1.fichasJugador, jugador2.fichasJugador, fichaSalir);
+        fichaSalir = tablero.quienSale(jugador1.fichasJugador, jugador2.fichasJugador);
+        primerT = tablero.turnoI(jugador1.fichasJugador, jugador2.fichasJugador, fichaSalir);
 
-        if(primerT == 1){
+
+        if (primerT == 1) {
             System.out.println("Turno de " + jugador1.nombre);
             System.out.println(jugador1.fichasJugador);
-            System.out.println("Indicar la posición de la ficha a colocar: ");
+            System.out.print("Indicar la posición de la ficha a colocar (1-7): ");
             posS = entrada.nextInt();
-            tablero.ponerFichaI(jugador1.fichasJugador, posS-1);
-        }
-        else {
+            tablero.ponerFichaI(jugador1.fichasJugador, posS - 1);
+        } else {
             System.out.println("Turno de " + jugador2.nombre);
             System.out.println(jugador2.fichasJugador);
-            System.out.println("Indicar la posición de la ficha a colocar: ");
+            System.out.print("Indicar la posición de la ficha a colocar (1-7): ");
             posS = entrada.nextInt();
-            tablero.ponerFichaI(jugador2.fichasJugador, posS-1);
+            tablero.ponerFichaI(jugador2.fichasJugador, posS - 1);
         }
 
-
-        System.out.println("Fichas del tablero" + tablero.fichasTablero);
-        System.out.println("1" + jugador1.fichasJugador);
-        System.out.println("2" + jugador2.fichasJugador);
+        System.out.println("Fichas del tablero jugadas: " + tablero.fichasTablero);
         System.out.println("");
+        while (validador == true) {
+            boolean v = tablero.validarJugadas(jugador1.fichasJugador, jugador2.fichasJugador, mesa);
+            if(v == false){
+                System.out.println("Partida trancada");
+                validador = false;
+                break;
+            }
+            if (primerT == 1) {
+                primerT = 2;
+            } else {
+                primerT = 1;
+            }
+            if (primerT == 1) {
+                System.out.println("Turno de " + jugador1.nombre);
+                System.out.println(jugador1.fichasJugador);
+                System.out.print("Indicar la posición de la ficha a colocar (1-7) ");
+                System.out.print("(Si desea tomar de la mesa ingrese 0) :");
+                posS = entrada.nextInt();
+                while (posS == 0) {
+                    jugador1.tomarFicha(mesa);
+                    System.out.println(jugador1.fichasJugador);
+                    System.out.print("Indicar la posición de la ficha a colocar (1-7) ");
+                    System.out.print("(Si desea tomar de la mesa ingrese 0) :");
+                    posS = entrada.nextInt();
+                }
+                    tablero.ponerFicha(jugador1.fichasJugador, posS - 1);
+                    System.out.println("Fichas del tablero jugadas: " + tablero.fichasTablero);
+                    System.out.println("");
 
-        System.out.println("pongala");
-        posS = entrada.nextInt();
-        tablero.ponerFicha(jugador1.fichasJugador, posS);
-        System.out.println("Fichas del tablero" + tablero.fichasTablero);
-        System.out.println("1" + jugador1.fichasJugador);
-        System.out.println("2" + jugador2.fichasJugador);
-        System.out.println("");
+            } else {
+                System.out.println("Turno de " + jugador2.nombre);
+                System.out.println(jugador2.fichasJugador);
+                System.out.print("Indicar la posición de la ficha a colocar (1-7) ");
+                System.out.print("(Si desea tomar de la mesa ingrese 0): ");
+                posS = entrada.nextInt();
+                while (posS == 0) {
+                    jugador2.tomarFicha(mesa);
+                    System.out.println(jugador2.fichasJugador);
+                    System.out.print("Indicar la posición de la ficha a colocar (1-7) ");
+                    System.out.print("(Si desea tomar ficha de la mesa ingrese 0) :");
+                    posS = entrada.nextInt();
+                }
+                    tablero.ponerFicha(jugador2.fichasJugador, posS - 1);
+                    System.out.println("Fichas del tablero jugadas: " + tablero.fichasTablero);
+                    System.out.println("");
+                }
+                }
+
+            System.out.println("Fichas del tablero jugadas: " + tablero.fichasTablero);
+            System.out.println("");
+
+
+            System.out.println("sigo?");
+            validador = entrada.nextBoolean();
+        }
+
+    }
+
+
+
+
+        /*
+
 
 
         System.out.println("pongala2");
@@ -159,7 +206,7 @@ public class JuegoDomino {
         System.out.println("2" + jugador2.fichasJugador);
 
 
-
+*/
 
 
 
@@ -230,8 +277,7 @@ public class JuegoDomino {
         //System.out.println(ultFicha.getNum1());
         //System.out.println(ultFicha.getNum2());
 */
-    }
-}
+
 
 
 

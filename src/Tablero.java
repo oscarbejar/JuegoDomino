@@ -79,15 +79,15 @@ public class Tablero {
             izq = fichasTablero.get(0).getNum1();
         } else if (fichaJug.get(pos).getNum2() == der) {
             fichaJug.set(pos, fichaJug.get(pos).ordenarFicha(fichaJug.get(pos)));
-            fichasTablero.add(fichasTablero.size() - 1, fichaJug.get(pos));
+            fichasTablero.add(fichasTablero.size(), fichaJug.get(pos));
             fichaJug.remove(pos);
             der = fichasTablero.get(fichasTablero.size()-1).getNum2();
         } else if (fichaJug.get(pos).getNum1() == der) {
-            fichasTablero.add(fichasTablero.size() - 1, fichaJug.get(pos));
+            fichasTablero.add(fichasTablero.size(), fichaJug.get(pos));
             fichaJug.remove(pos);
             der = fichasTablero.get(fichasTablero.size()-1).getNum2();
         }
-            return fichasAct;
+            return fichaJug;
         }
 
 
@@ -121,7 +121,37 @@ public class Tablero {
             }
             return jug;
         }
-    }
+
+        public boolean validarJugadas(ArrayList<Ficha> fichasJug1, ArrayList<Ficha> fichasJug2,ArrayList<Ficha> fichasM) {
+            boolean validador = true;
+            int v = 0;
+            for (int i = 0; i <= fichasJug1.size(); i++) {
+                if ((fichasJug1.get(i).getNum1() == izq) || (fichasJug1.get(i).getNum2() == izq) || (fichasJug1.get(i).getNum2() == der) || (fichasJug1.get(i).getNum1() == der)) {
+                    v += 1;
+                    break;
+                }
+            }
+            for (int i = 0; i <= fichasJug2.size(); i++) {
+                if ((fichasJug2.get(i).getNum1() == izq) || (fichasJug2.get(i).getNum2() == izq) || (fichasJug2.get(i).getNum2() == der) || (fichasJug2.get(i).getNum1() == der)) {
+                    v += 1;
+                    break;
+                }
+            }
+            for (int i = 0; i <= fichasM.size(); i++) {
+                if ((fichasM.get(i).getNum1() == izq) || (fichasM.get(i).getNum2() == izq) || (fichasM.get(i).getNum2() == der) || (fichasM.get(i).getNum1() == der)) {
+                    v += 1;
+                    break;
+                }
+            }
+                    if (v > 0) {
+                        validador = true;
+                    } else {
+                        validador = false;
+                    }
+                    return validador;
+                }
+            }
+
 
 
 
