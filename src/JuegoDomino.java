@@ -1,18 +1,24 @@
-import jdk.swing.interop.SwingInterOpUtils;
 import org.w3c.dom.ls.LSOutput;
 import javax.swing.*;
 import java.awt.*;
-import java.sql.SQLOutput;
+import java.sql.*;
 import java.util.*;
+
 
 public class JuegoDomino {
 
     public static void main(String[] args) {
 
+
+        //Conexion nuevaC = new Conexion();
+
+
         ArrayList<Ficha> fichaSalir = new ArrayList<>();
         int posS;
         boolean validador = true;
         int primerT;
+        String jugadorG = "";
+        int puntosG = 0;
         ArrayList<Ficha> fichavl = new ArrayList<>();
         boolean val;
         Scanner entrada = new Scanner(System.in);
@@ -157,12 +163,13 @@ public class JuegoDomino {
                     System.out.print("(Si desea tomar de la mesa ingrese 0) :");
                     posS = entrada.nextInt();
                 }
-                val = tablero.validarJugada(jugador1.fichasJugador, posS -1);
+                val = tablero.validarJugada(jugador1.fichasJugador, posS - 1);
                 while (val == false) {
                     System.out.println("ficha jugada no valida");
                     System.out.print("Indicar la posición de la ficha a colocar (1-7) ");
                     System.out.print("(Si desea tomar de la mesa ingrese 0) :");
                     posS = entrada.nextInt();
+                    val = tablero.validarJugada(jugador1.fichasJugador, posS - 1);
                     while (posS == 0) {
                         jugador1.tomarFicha(mesa);
                         System.out.println(jugador1.fichasJugador);
@@ -189,8 +196,8 @@ public class JuegoDomino {
                     System.out.print("Indicar la posición de la ficha a colocar (1-7) ");
                     System.out.print("(Si desea tomar ficha de la mesa ingrese 0) :");
                     posS = entrada.nextInt();
-                    }
-                val = tablero.validarJugada(jugador2.fichasJugador, posS -1);
+                }
+                val = tablero.validarJugada(jugador2.fichasJugador, posS - 1);
                 while (val == false) {
                     System.out.println("ficha jugada no valida");
                     System.out.print("Indicar la posición de la ficha a colocar (1-7) ");
@@ -205,9 +212,9 @@ public class JuegoDomino {
                     }
                     val = tablero.validarJugada(jugador2.fichasJugador, posS - 1);
                 }
-                    tablero.ponerFicha(jugador2.fichasJugador, posS - 1);
-                    System.out.println("Fichas del tablero jugadas: " + tablero.fichasTablero);
-                    System.out.println("");
+                tablero.ponerFicha(jugador2.fichasJugador, posS - 1);
+                System.out.println("Fichas del tablero jugadas: " + tablero.fichasTablero);
+                System.out.println("");
 
             }
 
@@ -215,19 +222,22 @@ public class JuegoDomino {
             System.out.println("");
 
 
-            if(jugador1.fichasJugador.size() < 1){
+            if (jugador1.fichasJugador.size() < 1) {
                 System.out.println("Gano el Jugador: " + jugador1.nombre);
+                jugadorG = jugador1.nombre;
                 validador = false;
                 jugador1.puntos = tablero.puntaje(jugador2.fichasJugador);
-                System.out.println("Los puntos ganados del jugador " + jugador1.nombre + " son: " + jugador1.puntos );
-            }
-            else if (jugador2.fichasJugador.size() < 1){
+                puntosG = jugador1.puntos;
+                System.out.println("Los puntos ganados del jugador " + jugador1.nombre + " son: " + jugador1.puntos);
+
+            } else if (jugador2.fichasJugador.size() < 1) {
                 System.out.println("Gano el Jugador: " + jugador2.nombre);
+                jugadorG = jugador2.nombre;
                 validador = false;
                 jugador2.puntos = tablero.puntaje(jugador1.fichasJugador);
-                System.out.println("Los puntos ganados del jugador " + jugador2.nombre + " son: " + jugador2.puntos );
-            }
-            else {
+                puntosG = jugador2.puntos;
+                System.out.println("Los puntos ganados del jugador " + jugador2.nombre + " son: " + jugador2.puntos);
+            } else {
                 v = tablero.validarJuego(jugador1.fichasJugador, jugador2.fichasJugador, mesa);
                 if (v == false) {
                     System.out.println("PARTIDA TRANCADA!");
@@ -235,17 +245,22 @@ public class JuegoDomino {
                     System.out.println("Cantidad de jugador " + jugador1.nombre + " es: " + pnts1);
                     int pnts2 = tablero.puntaje(jugador2.fichasJugador);
                     System.out.println("Cantidad de jugador " + jugador2.nombre + " es: " + pnts2);
-                    if(pnts1 < pnts2){
+                    if (pnts1 < pnts2) {
                         System.out.println("Gano el Jugador: " + jugador1.nombre);
+                        jugadorG = jugador1.nombre;
                         jugador1.puntos = tablero.puntaje(jugador2.fichasJugador);
-                        System.out.println("Los puntos ganados del jugador " + jugador1.nombre + " son: " + jugador1.puntos );
-                    }
-                    else if(pnts1 > pnts2){
+                        puntosG = jugador1.puntos;
+                        System.out.println("Los puntos ganados del jugador " + jugador1.nombre + " son: " + jugador1.puntos);
+                    } else if (pnts1 > pnts2) {
                         System.out.println("Gano el Jugador: " + jugador2.nombre);
+                        jugadorG = jugador1.nombre;
                         jugador2.puntos = tablero.puntaje(jugador1.fichasJugador);
-                        System.out.println("Los puntos ganados del jugador " + jugador2.nombre + " son: " + jugador2.puntos );
+                        puntosG = jugador2.puntos;
+                        System.out.println("Los puntos ganados del jugador " + jugador2.nombre + " son: " + jugador2.puntos);
 
                     }
+                    //nuevaC.guardarPartida(jugadorG, puntosG);
+                    //nuevaC.verPartidas();
                     validador = false;
                     break;
                 }
@@ -255,78 +270,7 @@ public class JuegoDomino {
 
 
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //jugador1.tomarFicha(mesa);
-        //jugador2.tomarFicha(mesa);
-        //jugador2.tomarFicha(mesa);
-        //jugador2.tomarFicha(mesa);
-
-        //jugador1.tomarFicha(mesa);
-        //System.out.println(jugador1.fichasJugador);
-        //System.out.println(mesa);
-
-    /*
-        jugador1.fichasJugador = tablero.ponerFicha(jugador1.fichasJugador);
-        jugador2.fichasJugador = tablero.ponerFicha(jugador2.fichasJugador);
-        System.out.println("Las Fichas jugadas: " + tablero.fichasTablero);
-        //System.out.println(jugador2.fichasJugador);
-        Ficha ultFicha;
-        ultFicha = tablero.fichasTablero.get(0);
-        System.out.println("sin ordenar");
-        System.out.println(ultFicha);
-
-        ultFicha = ultFicha.ordenarFicha(ultFicha);
-        System.out.println("ordenado");
-        System.out.println(ultFicha);
-        //System.out.println("");
-        //System.out.println(ultFicha.getNum1());
-        //System.out.println(ultFicha.getNum2());
-*/
 
 
 
