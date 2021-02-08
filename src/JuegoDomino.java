@@ -8,7 +8,8 @@ import java.util.*;
 public class JuegoDomino {
 
     public static void main(String[] args) {
-
+        Conexion hite = new Conexion();
+        hite.hitest();
 
         //Conexion nuevaC = new Conexion();
 
